@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"C:\\Users\\Duarte\\Documents\\Unreal Projects\\Plugins\\DMVMetricsSystem\\ue_proj\\Source\\DMVMeleeCombat\\DMVMeleeCombat.Build.cs",
+		"C:\\Users\\Duarte\\Documents\\Unreal Projects\\Plugins\\DMVMetricsSystem\\ue_proj\\Source\\DMVMeleeCombat.Target.cs",
+		"C:\\Users\\Duarte\\Documents\\Unreal Projects\\Plugins\\DMVMetricsSystem\\ue_proj\\Source\\DMVMeleeCombatEditor.Target.cs"
+	],
+	"EngineVersion": "5.4.1"
+}
