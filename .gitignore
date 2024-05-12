@@ -70,7 +70,7 @@ ue_proj/Saved/*
 ue_proj/Intermediate/*
 !/ProjectFiles
 /ProjectFiles/*
-!/ProjectFiles/Model
+!/ProjectFiles/Model/*
 
 Plugins/*/Intermediate/*
 
