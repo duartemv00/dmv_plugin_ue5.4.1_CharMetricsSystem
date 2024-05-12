@@ -26,11 +26,7 @@ void UDMVMCCharMetricsComp::SetMetricCurrentValue(FGameplayTag metricName, float
 	{
 		if(metric.metricName == metricName)
 		{
-			metric.currentValue = newCurrentValue;
-			// if(metric.metricName == ECharMetricsEnum::HEALTH)
-			// {
-			// 	if(OnHealthChange.IsBound()) { OnHealthChange.Broadcast(); }
-			// }
+			metric.currentValue = DMVMetricsCalculationBrain::SetMetricValue(newCurrentValue, metric.maxValue, metric.minValue);
 			return;
 		}
 	}
@@ -84,11 +80,8 @@ void UDMVMCCharMetricsComp::ModifyMetricCurrentValue(FGameplayTag metricName, fl
 	{
 		if(metric.metricName == metricName)
 		{
-			metric.currentValue = FMath::Clamp(metric.currentValue + value, metric.minValue, metric.maxValue);
-			// if(metric.metricName == ECharMetricsEnum::HEALTH)
-			// {
-			// 	if(OnHealthChange.IsBound()) { OnHealthChange.Broadcast(); }
-			// }
+			//metric.currentValue = FMath::Clamp(metric.currentValue + value, metric.minValue, metric.maxValue);
+			metric.currentValue = DMVMetricsCalculationBrain::ModifyMetricValue(metric.currentValue, value, metric.maxValue, metric.minValue);
 			return;
 		}
 	}
@@ -108,7 +101,7 @@ void UDMVMCCharMetricsComp::RegenMetric(const FGameplayTag metricName, float reg
 {
 	for(auto &metric : metricsSet)
 	{
-		if(metric.metricName == metricName && metric.metricType == ECharMetricsEnum::REGEN_STAT)
+		if(metric.metricName == metricName && metric.metricType == ECharMetricsEnum::REGENERATIVE)
 		{
 			metric.currentValue = FMath::Clamp(metric.currentValue + regenQuantity, metric.minValue, metric.maxValue);
 			return;
@@ -121,7 +114,7 @@ void UDMVMCCharMetricsComp::UnregenMetric(const FGameplayTag metricName, float r
 {
 	for(auto &metric : metricsSet)
 	{
-		if(metric.metricName == metricName && metric.metricType == ECharMetricsEnum::REGEN_STAT)
+		if(metric.metricName == metricName && metric.metricType == ECharMetricsEnum::REGENERATIVE)
 		{
 			metric.currentValue = FMath::Clamp(metric.currentValue - regenQuantity, metric.minValue, metric.maxValue);
 			// if(metric.metricName == ECharMetricsEnum::BLOOD_LUST)

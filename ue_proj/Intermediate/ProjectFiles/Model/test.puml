@@ -2,26 +2,39 @@
 'https://plantuml.com/object-diagram
 allow_mixing
 
+title Metrics System
+
+component DT_Metrics
+note top: List of Gameplay Tags used as names
+
 enum MetricType {
-STATIC
+CONSTANT
 REGENERATIVE
 }
-note right of MetricType::STATIC 
+note right of MetricType::CONSTANT
 Value represent a characteristic of the character 
+that doesn't change in time except by external events
+like upgrading the character, or using items
 (like strength, agility, etc.)
 end note
 note right of MetricType::REGENERATIVE
 Value represent an state of the character 
+that can rapidly change in time 
+incrementing or decrementing
 (like health, stamina, etc.)
 end note
 
 Struct Metric {
-    + string Name
+    + GameplayTag Name
     + MetricType Type
     + int Value
     + int MaxValue
     + int MinValue
 }
+class MetricsCalculationBrain {
+    
+} 
+note right: Handles changes in metrics, \nby doing all the calculations.
 
 class CharMetricsComponent {
     + List<Metric> Metrics
@@ -32,28 +45,22 @@ class CharMetricsComponent {
     + SetMetricMaxValue(string metricName, int newMaxValue)
     
     + ModifyMetricValue(string metricName, int valueMod)
+    
+    + StartMetricRegeneration(string metricName, int regenRate, bool unregen)
+    + StopMetricRegeneration(string metricName)
 }
-note top: Handles changes in metrics, \nbut no the behaviours related to them.
+note right: Calls changes in metrics, \nbut not the behaviours \nrelated to those changes
 
-class CharActionsComponent {
-
+class MetricsFunctionLibrary {
+    
 }
-note top: Recieving float data, \nhandles every character action.
 
 class DMVCMS_Character {
     + CharMetricsComponent CMC
 }
-class DMVCMS_Player {
-    + CharMetricsComponent CMC
-}
-class DMVCMS_Rival {
-    + CharMetricsComponent CMC
-}
 
-DMVCMS_Character  --> DMVCMS_Player 
-DMVCMS_Character  --> DMVCMS_Rival
-DMVCMS_Rival <-> DMVCMS_Player : Rivalry
+MetricsCalculationBrain <---> CharMetricsComponent
 CharMetricsComponent "1" *-- DMVCMS_Character : contains
-CharActionsComponent "1" *-- DMVCMS_Character : contains
+MetricsFunctionLibrary -> CharMetricsComponent : Is there a CMC? Then call some method.
 
 @enduml

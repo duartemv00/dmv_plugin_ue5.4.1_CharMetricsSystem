@@ -8,8 +8,7 @@ UENUM(BlueprintType)
 enum class ECharMetricsEnum : uint8
 {
 	STAT,
-	REGEN_STAT,
-	ACTION_CALLER
+	REGENERATIVE
 };
 
 // UCLASS()

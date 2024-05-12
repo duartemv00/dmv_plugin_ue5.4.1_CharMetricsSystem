@@ -48,6 +48,15 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "DMV|Camera")
 	void SetCamBoomTargetArmLength(float NewLength) const;
 
+	// Here goes the different metrics that the player will have
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "DMV | Metrics")
+	float Health;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "DMV | Metrics")
+	float Stamina;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "DMV | Metrics")
+	float Attack;
+	// ...
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

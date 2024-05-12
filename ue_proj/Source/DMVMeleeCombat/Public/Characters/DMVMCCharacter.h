@@ -18,10 +18,11 @@ class ADMVMCCharacter : public ACharacter
 public:
 	ADMVMCCharacter();
 	
-	// ***** COMPONENTS *****
+	// ***** CHAR METRICS COMPONENT *****
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "DMV | Metrics")
 	UDMVMCCharMetricsComp* CharMetricsComp;
 
+	// ***** ACTIONS *****
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "DMV | Actions")
 	bool bActionLock = false;
 

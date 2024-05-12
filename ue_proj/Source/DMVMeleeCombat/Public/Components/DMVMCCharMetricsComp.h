@@ -6,6 +6,8 @@
 #include "DMVMCTypes.h"
 #include "GameplayTagContainer.h"
 #include "Components/ActorComponent.h"
+#include "DMVMetricsCalculationBrain.h"
+
 #include "DMVMCCharMetricsComp.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnHealthChangeDelegate);
