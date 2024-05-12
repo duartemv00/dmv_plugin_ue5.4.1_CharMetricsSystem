@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "DMVMeleeCombat",
+			"Path": "..\\Source\\DMVMeleeCombat.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "DMVMeleeCombatEditor",
+			"Path": "..\\Source\\DMVMeleeCombatEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

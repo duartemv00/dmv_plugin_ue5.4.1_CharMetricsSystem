@@ -1,0 +1,41 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\duarte\\documents\\unreal projects\\plugins\\dmvmeleecombat\\source\\dmvmeleecombat\\private\\components\\dmvmccharmetricscomp.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\duarte\\documents\\unreal projects\\plugins\\dmvmeleecombat\\intermediate\\build\\win64\\x64\\dmvmeleecombateditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "c:\\users\\duarte\\documents\\unreal projects\\plugins\\dmvmeleecombat\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\dmvmeleecombat\\definitions.dmvmeleecombat.h",
+            "c:\\users\\duarte\\documents\\unreal projects\\plugins\\dmvmeleecombat\\source\\dmvmeleecombat\\public\\components\\dmvmccharmetricscomp.h",
+            "c:\\users\\duarte\\documents\\unreal projects\\plugins\\dmvmeleecombat\\source\\dmvmeleecombat\\public\\dmvmctypes.h",
+            "c:\\users\\duarte\\documents\\unreal projects\\plugins\\dmvmeleecombat\\intermediate\\build\\win64\\unrealeditor\\inc\\dmvmeleecombat\\uht\\dmvmctypes.generated.h",
+            "d:\\epic games\\ue_5.4\\engine\\source\\runtime\\gameplaytags\\classes\\gameplaytagcontainer.h",
+            "d:\\epic games\\ue_5.4\\engine\\source\\runtime\\core\\public\\misc\\comparisonutility.h",
+            "d:\\epic games\\ue_5.4\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\gameplaytags\\uht\\gameplaytagcontainer.generated.h",
+            "c:\\users\\duarte\\documents\\unreal projects\\plugins\\dmvmeleecombat\\intermediate\\build\\win64\\unrealeditor\\inc\\dmvmeleecombat\\uht\\dmvmccharmetricscomp.generated.h",
+            "c:\\users\\duarte\\documents\\unreal projects\\plugins\\dmvmeleecombat\\source\\dmvmeleecombat\\public\\dmvmcobjectbase.h",
+            "d:\\epic games\\ue_5.4\\engine\\plugins\\runtime\\statetree\\source\\statetreemodule\\public\\statetreeconditionbase.h",
+            "d:\\epic games\\ue_5.4\\engine\\plugins\\runtime\\statetree\\source\\statetreemodule\\public\\statetreenodebase.h",
+            "d:\\epic games\\ue_5.4\\engine\\plugins\\runtime\\statetree\\source\\statetreemodule\\public\\statetreetypes.h",
+            "d:\\epic games\\ue_5.4\\engine\\plugins\\experimental\\structutils\\source\\structutils\\public\\propertybag.h",
+            "d:\\epic games\\ue_5.4\\engine\\plugins\\experimental\\structutils\\source\\structutils\\public\\structview.h",
+            "d:\\epic games\\ue_5.4\\engine\\plugins\\experimental\\structutils\\source\\structutils\\public\\instancedstruct.h",
+            "d:\\epic games\\ue_5.4\\engine\\plugins\\experimental\\structutils\\source\\structutils\\public\\structutils.h",
+            "d:\\epic games\\ue_5.4\\engine\\plugins\\experimental\\structutils\\intermediate\\build\\win64\\unrealeditor\\inc\\structutils\\uht\\instancedstruct.generated.h",
+            "d:\\epic games\\ue_5.4\\engine\\plugins\\experimental\\structutils\\source\\structutils\\public\\sharedstruct.h",
+            "d:\\epic games\\ue_5.4\\engine\\plugins\\experimental\\structutils\\source\\structutils\\public\\structutilstypes.h",
+            "d:\\epic games\\ue_5.4\\engine\\plugins\\experimental\\structutils\\intermediate\\build\\win64\\unrealeditor\\inc\\structutils\\uht\\sharedstruct.generated.h",
+            "d:\\epic games\\ue_5.4\\engine\\plugins\\experimental\\structutils\\intermediate\\build\\win64\\unrealeditor\\inc\\structutils\\uht\\propertybag.generated.h",
+            "d:\\epic games\\ue_5.4\\engine\\plugins\\runtime\\statetree\\source\\statetreemodule\\public\\statetreeindextypes.h",
+            "d:\\epic games\\ue_5.4\\engine\\plugins\\runtime\\statetree\\intermediate\\build\\win64\\unrealeditor\\inc\\statetreemodule\\uht\\statetreeindextypes.generated.h",
+            "d:\\epic games\\ue_5.4\\engine\\plugins\\runtime\\statetree\\intermediate\\build\\win64\\unrealeditor\\inc\\statetreemodule\\uht\\statetreetypes.generated.h",
+            "d:\\epic games\\ue_5.4\\engine\\plugins\\runtime\\statetree\\intermediate\\build\\win64\\unrealeditor\\inc\\statetreemodule\\uht\\statetreenodebase.generated.h",
+            "d:\\epic games\\ue_5.4\\engine\\plugins\\runtime\\statetree\\source\\statetreemodule\\public\\statetreeexecutiontypes.h",
+            "d:\\epic games\\ue_5.4\\engine\\plugins\\runtime\\statetree\\intermediate\\build\\win64\\unrealeditor\\inc\\statetreemodule\\uht\\statetreeexecutiontypes.generated.h",
+            "d:\\epic games\\ue_5.4\\engine\\plugins\\runtime\\statetree\\intermediate\\build\\win64\\unrealeditor\\inc\\statetreemodule\\uht\\statetreeconditionbase.generated.h",
+            "c:\\users\\duarte\\documents\\unreal projects\\plugins\\dmvmeleecombat\\intermediate\\build\\win64\\unrealeditor\\inc\\dmvmeleecombat\\uht\\dmvmcobjectbase.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
