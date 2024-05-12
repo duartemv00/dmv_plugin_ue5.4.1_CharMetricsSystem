@@ -1,27 +1,59 @@
 @startuml
-'https://plantuml.com/class-diagram
+'https://plantuml.com/object-diagram
+allow_mixing
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
+enum MetricType {
+STATIC
+REGENERATIVE
+}
+note right of MetricType::STATIC 
+Value represent a characteristic of the character 
+(like strength, agility, etc.)
+end note
+note right of MetricType::REGENERATIVE
+Value represent an state of the character 
+(like health, stamina, etc.)
+end note
 
-List <|-- AbstractList
-Collection <|-- AbstractCollection
-
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-
-class ArrayList {
-Object[] elementData
-size()
+Struct Metric {
+    + string Name
+    + MetricType Type
+    + int Value
+    + int MaxValue
+    + int MinValue
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+class CharMetricsComponent {
+    + List<Metric> Metrics
+    + GetMetricValue(in string metricName) : float
+    + GetMetricMaxValue(in string metricName) : float
+    
+    + SetMetricValue(string metricName, int newValue)
+    + SetMetricMaxValue(string metricName, int newMaxValue)
+    
+    + ModifyMetricValue(string metricName, int valueMod)
 }
+note top: Handles changes in metrics, \nbut no the behaviours related to them.
+
+class CharActionsComponent {
+
+}
+note top: Recieving float data, \nhandles every character action.
+
+class DMVCMS_Character {
+    + CharMetricsComponent CMC
+}
+class DMVCMS_Player {
+    + CharMetricsComponent CMC
+}
+class DMVCMS_Rival {
+    + CharMetricsComponent CMC
+}
+
+DMVCMS_Character  --> DMVCMS_Player 
+DMVCMS_Character  --> DMVCMS_Rival
+DMVCMS_Rival <-> DMVCMS_Player : Rivalry
+CharMetricsComponent "1" *-- DMVCMS_Character : contains
+CharActionsComponent "1" *-- DMVCMS_Character : contains
 
 @enduml
