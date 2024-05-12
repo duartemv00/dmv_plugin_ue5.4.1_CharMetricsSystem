@@ -68,7 +68,9 @@ ue_proj/Saved/*
 
 # Compiled source files for the engine to use
 ue_proj/Intermediate/*
-!ue_proj/Intermediate/*/
+!ue_proj/Intermediate/ProjectFiles
+ue_proj/Intermediate/ProjectFiles/*
+!ue_proj/Intermediate/ProjectFiles/Model
 
 Plugins/*/Intermediate/*
 
