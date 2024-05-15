@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Components/DMVMCCharMetricsComp.h"
+#include "MetricsManagement/Components/DMVMCCharMetricsComp.h"
 #include "GameFramework/Character.h"
 #include "Logging/LogMacros.h"
 #include "DMVMCCharacter.generated.h"
