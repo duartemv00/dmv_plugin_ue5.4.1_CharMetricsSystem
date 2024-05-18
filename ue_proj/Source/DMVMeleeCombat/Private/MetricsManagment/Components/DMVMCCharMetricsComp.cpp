@@ -1,7 +1,7 @@
 #pragma once
 
-#include "CoreMinimal.h"
 #include "MetricsManagement/Components/DMVMCCharMetricsComp.h"
+#include "CoreMinimal.h"
 #include "MetricsManagement/DMVMCTypes.h"
 #include "MetricsManagement/DMVMCObjectBase.h"
 

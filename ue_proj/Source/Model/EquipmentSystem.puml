@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/object-diagram
+
+object EquipmentManager {
+    -equipment: List<ParentItem>
+    -equippedWeapon: ParentWeapon
+    +AddItem(equipment: Equipment): void
+    +RemoveItem(equipment: Equipment): void
+    +EquipWeapon(item: ParentItem): void
+    +UnEquipWeapon(): void
+    +DrawWeapon(weapon: ParentWeapon): void   
+    +GetCurrentItems(): List<Equipment>  
+}
+
+object ParentItem {
+    -MetricsManager: MetricsManager
+}
+object ParentWeapon {
+    -baseDamage: int
+    +getBaseDamage(): int
+}
+
+object ParentSword
+
+
+ParentItem <-- ParentWeapon
+ParentWeapon <-- ParentSword
+
+@enduml
