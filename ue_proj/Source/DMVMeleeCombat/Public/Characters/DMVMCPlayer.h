@@ -41,6 +41,9 @@ class DMVMELEECOMBAT_API ADMVMCPlayer : public ADMVMCCharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* LookAction;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UChildActorComponent* EquippedWeapon;
+
 public:
 	// Sets default values for this character's properties
 	ADMVMCPlayer();

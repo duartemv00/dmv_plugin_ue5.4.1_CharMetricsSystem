@@ -16,34 +16,31 @@ UEquipmentManager::UEquipmentManager()
 // Add a new item to the list of items that the player has
 void UEquipmentManager::AddItem(AParentItem* newItem)
 {
-	if(newItem->IsA(AParentWeapon::StaticClass()))
-	{
-		// If the item is a weapon, we add it to the list of weapons
-		AddWeapon(newItem);
-	}
-	else if(newItem->IsA(AConsumableParent::StaticClass()))
-	{
-		// If the item is a consumable, we add it to the list of consumables
-		AddConsumable(newItem);
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Item is not a weapon or a consumable. Cant add it."));
-	}
+	// For now, this isn't going to be used, but it's here for future implementations
 }
-
-void UEquipmentManager::AddWeapon(AParentItem* newWeapon)
+// ***** Specific methods to add weapons *****
+void UEquipmentManager::AddWeapon(TSubclassOf<AParentWeapon> newWeapon)
 {
+	// First we check out if the weapon is already in the inventory
+	for (FWeapon weapon : Items.Weapons)
+	{
+		if(weapon.WeaponClass->GetClass() == newWeapon)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Weapon is already in the inventory."));
+			return;
+		}
+	}
+	// If item is not in the inventory, then we add it
 	FWeapon ToAddWeapon;
-	ToAddWeapon.Weapon = Cast<UPDAWeapon>(newWeapon);
+	ToAddWeapon.WeaponClass = newWeapon;
 	ToAddWeapon.IsEquipped = false;
 	Items.Weapons.Add(ToAddWeapon);
 }
 
-void UEquipmentManager::AddConsumable(AParentItem* newConsumable)
+void UEquipmentManager::AddConsumable(UPDAItem* newConsumable)
 {
 	FConsumable ToAddConsumable;
-	ToAddConsumable.Consumable = Cast<AConsumableParent>(newConsumable);
+	ToAddConsumable.Consumable = newConsumable;
 	Items.Consumables.Add(ToAddConsumable);
 }
 
@@ -51,7 +48,7 @@ void UEquipmentManager::RemoveItem(AParentItem* oldItem)
 {
 	if(oldItem->IsA(AParentWeapon::StaticClass()))
 	{
-		RemoveWeapon(oldItem);
+		//RemoveWeapon(oldItem);
 	}
 	else if(oldItem->IsA(AConsumableParent::StaticClass()))
 	{
@@ -63,10 +60,19 @@ void UEquipmentManager::RemoveItem(AParentItem* oldItem)
 	}
 }
 
-void UEquipmentManager::RemoveWeapon(AParentItem* oldWeapon)
+void UEquipmentManager::RemoveWeapon(const TSubclassOf<AParentWeapon>& oldWeapon)
 {
-	// Not sure if this will delete the item I want to delete or just any item that matches the type
-	//Items.Weapons.Remove(FWeapon{Cast<AParentWeapon>(oldWeapon), false});
+	int aux = 0;
+	for (FWeapon weapon : Items.Weapons)
+	{
+		if(weapon.WeaponClass->GetClass() == oldWeapon)
+		{
+			Items.Weapons.RemoveAt(aux);
+			return;
+		}
+		aux += 1;
+	}
+	
 }
 
 void UEquipmentManager::RemoveConsumable(AParentItem* oldConsumable)
@@ -75,9 +81,14 @@ void UEquipmentManager::RemoveConsumable(AParentItem* oldConsumable)
 	//Items.Consumables.Remove(FConsumable{Cast<AConsumableParent>(oldConsumable)});
 }
 
-void UEquipmentManager::EquipWeapon(AParentWeapon* selectedWeapon)
+AParentWeapon* UEquipmentManager::GetWeapon(int i)
 {
-	// Implementar
+	return Items.Weapons[i].WeaponClass->GetDefaultObject<AParentWeapon>();
+}
+
+void UEquipmentManager::EquipWeapon(TSubclassOf<AParentWeapon> selectedWeapon)
+{
+	// Not sure if this is the best way to do this
 }
 
 // Sets the equipped weapon to null

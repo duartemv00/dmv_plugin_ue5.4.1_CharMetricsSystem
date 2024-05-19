@@ -7,7 +7,7 @@
 #include "Items/ParentItem.h"
 #include "Items/Weapons/ParentWeapon.h"
 #include "Items/Consumable/ConsumableParent.h"
-#include "Items/Weapons/PDAWeapon.h"
+#include "Items/Weapons/PDAItem.h"
 #include "EquipmentManager.generated.h"
 
 USTRUCT()
@@ -15,7 +15,9 @@ struct FConsumable
 {
 	GENERATED_BODY()
 	UPROPERTY(EditAnywhere)
-	AConsumableParent* Consumable;
+	UPDAItem* Consumable;
+	UPROPERTY()
+	int Quantity;
 };
 
 USTRUCT(BlueprintType)
@@ -23,7 +25,7 @@ struct FWeapon
 {
 	GENERATED_BODY()
 	UPROPERTY(EditAnywhere)
-	UPDAWeapon* Weapon;
+	TSubclassOf<AParentWeapon> WeaponClass;
 	UPROPERTY()
 	bool IsEquipped;
 };
@@ -48,31 +50,31 @@ private:
 	UPROPERTY(EditAnywhere, Category="DMVEquipmentSystem")
 	FItem Items;
 	UPROPERTY(EditAnywhere, Category="DMVEquipmentSystem")
-	UPDAWeapon* InitialWeapons;
-	UPROPERTY()
-	AParentWeapon* EquippedWeapon;
+	UChildActorComponent* EquippedWeapon;
 	UPROPERTY()
 	AParentWeapon* DrawnWeapon;
 public:
 	// Methods to ADD items
 	UFUNCTION(BlueprintCallable, Category="DMVEquipmentSystem")
 	void AddItem(AParentItem* newItem);
-	UFUNCTION()
-	void AddWeapon(AParentItem* newWeapon);
-	UFUNCTION()
-	void AddConsumable(AParentItem* newConsumable);
+	UFUNCTION(BlueprintCallable, Category="DMVEquipmentSystem")
+	void AddWeapon(TSubclassOf<AParentWeapon> newWeapon);
+	UFUNCTION(BlueprintCallable, Category="DMVEquipmentSystem")
+	void AddConsumable(UPDAItem* newConsumable);
 	
 	// Methods to REMOVE items
 	UFUNCTION(BlueprintCallable, Category="DMVEquipmentSystem")
 	void RemoveItem(AParentItem* oldItem);
 	UFUNCTION()
-	void RemoveWeapon(AParentItem* oldWeapon);
+	void RemoveWeapon(const TSubclassOf<AParentWeapon>& oldWeapon);
 	UFUNCTION()
 	void RemoveConsumable(AParentItem* oldConsumable);
 
+	UFUNCTION(BlueprintCallable, Category="DMVEquipmentSystem")
+	AParentWeapon* GetWeapon(int i);
 	
 	UFUNCTION(BlueprintCallable, Category="DMVEquipmentSystem")
-	void EquipWeapon(AParentWeapon* selectedWeapon);
+	void EquipWeapon(TSubclassOf<AParentWeapon> selectedWeapon);
 
 	UFUNCTION(BlueprintCallable, Category="DMVEquipmentSystem")
 	void UnEquipWeapon();
