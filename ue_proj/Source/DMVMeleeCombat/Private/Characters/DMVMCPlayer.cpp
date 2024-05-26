@@ -15,7 +15,7 @@
 ADMVMCPlayer::ADMVMCPlayer()
 {
 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bCanEverTick = false;
 		
 	// Don't rotate when the controller rotates. Let that just affect the camera.
 	bUseControllerRotationPitch = false;
@@ -46,8 +46,13 @@ ADMVMCPlayer::ADMVMCPlayer()
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
 	FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
 
-	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
-	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
+	LevelingComp = CreateDefaultSubobject<ULevelingComp>(TEXT("LevelingComp"));
+}
+
+void ADMVMCPlayer::HandleLevelUp(int32 Level)
+{
+	UE_LOG(LogTemp, Warning, TEXT("Player leveled up to level %d"), Level);
+	CharMetricsComp->LevelUpMetrics();
 }
 
 void ADMVMCPlayer::SetCamBoomTargetArmLength(float NewLength) const
@@ -59,6 +64,7 @@ void ADMVMCPlayer::SetCamBoomTargetArmLength(float NewLength) const
 void ADMVMCPlayer::BeginPlay()
 {
 	Super::BeginPlay();
+	LevelingComp->OnLevelUp.AddDynamic(this, &ADMVMCPlayer::HandleLevelUp);
 }
 
 void ADMVMCPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -127,9 +133,4 @@ void ADMVMCPlayer::Look(const FInputActionValue& Value)
 	}
 }
 
-// Called every frame
-void ADMVMCPlayer::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-}
 

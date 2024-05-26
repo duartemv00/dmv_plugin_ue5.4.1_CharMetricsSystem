@@ -150,3 +150,8 @@ void UDMVMCCharMetricsComp::StopRegenTimer(const FGameplayTag metricName)
 {
 	GetWorld()->GetTimerManager().PauseTimer(RegenTimerHandle);
 }
+
+void UDMVMCCharMetricsComp::LevelUpMetrics()
+{
+	// This will take all metrics with a certain flag and increase their max value due to the level up
+}

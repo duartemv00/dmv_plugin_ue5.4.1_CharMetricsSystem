@@ -100,4 +100,7 @@ public:
 	// Stops the regen timer
 	UFUNCTION(BlueprintCallable, Category = "PI")
 	void StopRegenTimer(const FGameplayTag metricName);
+
+	UFUNCTION()
+	void LevelUpMetrics();
 };

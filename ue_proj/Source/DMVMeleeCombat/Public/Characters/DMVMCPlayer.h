@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "DMVMeleeCombat/Public/Characters/DMVMCCharacter.h"
+#include "LevelingSystem/LevelingComp.h"
 #include "DMVMCPlayer.generated.h"
 
 class USpringArmComponent;
@@ -44,9 +45,18 @@ class DMVMELEECOMBAT_API ADMVMCPlayer : public ADMVMCCharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UChildActorComponent* EquippedWeapon;
 
+	
+
 public:
 	// Sets default values for this character's properties
 	ADMVMCPlayer();
+
+	// ***** COMPONENTS *****
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Components)
+	class ULevelingComp* LevelingComp;
+
+	UFUNCTION()
+	void HandleLevelUp(int32 Level);
 
 	UFUNCTION(BlueprintCallable, Category = "DMV|Camera")
 	void SetCamBoomTargetArmLength(float NewLength) const;
@@ -69,9 +79,6 @@ protected:
 
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
-	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
